@@ -16,7 +16,7 @@ import com.parkinspace.parkinglotmanagement.data.ParkinglotUser;
 import com.parkinspace.parkinglotmanagement.service.ParkinglotUsersService;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/parkinglotuser")
 public class ParkinglotUserController {
 
     @Autowired

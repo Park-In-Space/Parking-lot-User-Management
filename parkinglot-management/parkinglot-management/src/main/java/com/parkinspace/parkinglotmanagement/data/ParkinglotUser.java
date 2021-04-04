@@ -1,5 +1,8 @@
 package com.parkinspace.parkinglotmanagement.data;
 
+import java.util.List;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -9,18 +12,12 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import java.util.List;
-
-import javax.persistence.Column;
-
 /*CREATE TABLE `parkinglotuser`.`parkinglotusers` (
   `id_plu` INT NOT NULL AUTO_INCREMENT,
   `username` VARCHAR(50) NOT NULL,
-  `password` VARCHAR(50) NOT NULL,
+  `email` VARCHAR(200) NOT NULL,
   `name` VARCHAR(200) NOT NULL,
-  `description` VARCHAR(250) NULL,
-  `slots` INT NOT NULL,
-  `location` VARCHAR(100) NOT NULL,
+  `phone` VARCHAR(100) NOT NULL,
   PRIMARY KEY (`id_plu`));*/
 
 @Entity
