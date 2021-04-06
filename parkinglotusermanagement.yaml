@@ -1,0 +1,390 @@
+swagger: "2.0"
+info:
+  description: "This is the parking lot user management microservice for the Park-In-Space app. It can be used to create, modify, and delete users that own parking lots from the system, as well as the relationship with their parking lots."
+  version: "0.0.1"
+  title: "Parking lot user management"
+  contact:
+    email: "arardilaag@unal.edu.co"
+#host: "petstore.swagger.io"
+#basePath: "/v2"
+tags:
+- name: "Parking lots associations"
+  description: "Associate an existing parking lot with a parking lot user."
+- name: "Parking lots users"
+  description: "Manage parking lot users"
+schemes:
+- "https"
+- "http"
+paths:
+  /api/parkinglots:
+    post:
+      tags:
+      - "Parking lots associations"
+      summary: "Create a new association between a parking lot user and a parking lot"
+      description: "Add a new association between a parking lot user and a parking lot."
+      operationId: "createNewParkinglot"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Parking lot id and parking lot user object that will be associated in the system"
+        required: true
+        schema:
+          $ref: "#/definitions/Parkinglotsput"
+      responses:
+        "200":
+          description: "The parking lot was successfully created"
+          schema:
+            $ref: "#/definitions/Parkinglots"
+    get:
+      tags:
+      - "Parking lots associations"
+      summary: "Get all parking lots associations in the system"
+      description: ""
+      operationId: "getAllParkings"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/json"
+      - "application/xml"
+      responses:
+        "200":
+          description: "Successfully found all parking lots associations"
+          schema:
+            type: "array"
+            items:
+              $ref: '#/definitions/Parkinglots'
+  /api/parkinglots/{Id}:
+    get:
+      tags:
+      - "Parking lots associations"
+      summary: "Get an existing parking lot association using its unique id"
+      description: ""
+      operationId: "getParkingById"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "Id"
+        in: "path"
+        description: "ID of parking lot association to get"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        "400":
+          description: "Invalid ID supplied"
+        "404":
+          description: "Parking lot association not found"
+        "200":
+          description: "The parking lot association was successfully found"
+          schema:
+            $ref: '#/definitions/Parkinglots'
+    put:
+      tags:
+      - "Parking lots associations"
+      summary: "Update an existing parking lot association"
+      description: ""
+      operationId: "updateParking"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "Id"
+        in: "path"
+        description: "ID of parking to update"
+        required: true
+        type: "integer"
+        format: "int64"
+      - in: "body"
+        name: "body"
+        description: "Parking object that will be modified in the system"
+        required: true
+        schema:
+          $ref: "#/definitions/Parkinglotsput"
+      responses:
+        "400":
+          description: "Invalid ID supplied"
+        "404":
+          description: "Parking not found"
+        "200":
+          description: "The parking lot was successfully updated"
+          schema:
+            $ref: '#/definitions/Parkinglots'
+    delete:
+      tags:
+      - "Parking lots associations"
+      summary: "Delete an existing parking lot association"
+      description: ""
+      operationId: "deleteParking"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "Id"
+        in: "path"
+        description: "ID of parking to delete"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        "400":
+          description: "Invalid ID supplied"
+        "404":
+          description: "Parking lot association not found"
+        "200":
+          description: "The parking lot association was successfully deleted"
+  /api/parkinglotuser/:
+    post:
+      tags:
+      - "Parking lots users"
+      summary: "Create a new parking lot user, who is a parking lot owner"
+      description: ""
+      operationId: "createNewParkinglotUser"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Parking lot user object that will be added to the system"
+        required: true
+        schema:
+          $ref: "#/definitions/ParkinglotUserput"
+      responses:
+        "200":
+          description: "The parking lot was successfully created"
+          schema:
+            $ref: "#/definitions/ParkinglotUser"
+    get:
+      tags:
+      - "Parking lots users"
+      summary: "Get all parking lots users in the system"
+      description: ""
+      operationId: "getAllParkinglotUsers"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/json"
+      - "application/xml"
+      responses:
+        "200":
+          description: "Successfully found all parking lot users"
+          schema:
+            type: "array"
+            items:
+              $ref: '#/definitions/ParkinglotUser'
+  /api/parkinglotuser/{Id}:
+    get:
+      tags:
+      - "Parking lots users"
+      summary: "Get an existing parking lot user using its unique id"
+      description: ""
+      operationId: "getParkinglotUserById"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "Id"
+        in: "path"
+        description: "ID of parking lot user to get"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        "400":
+          description: "Invalid ID supplied"
+        "404":
+          description: "Parking lot user not found"
+        "200":
+          description: "The parking lot user was successfully found"
+          schema:
+            $ref: '#/definitions/ParkinglotUser'
+    put:
+      tags:
+      - "Parking lots users"
+      summary: "Update an existing parking lot user"
+      description: ""
+      operationId: "updateParkinglotUser"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "Id"
+        in: "path"
+        description: "ID of parking lot user to update"
+        required: true
+        type: "integer"
+        format: "int64"
+      - in: "body"
+        name: "body"
+        description: "Parking lot user object that will be modified to the system"
+        required: true
+        schema:
+          $ref: "#/definitions/ParkinglotUserput"
+      responses:
+        "400":
+          description: "Invalid ID supplied"
+        "404":
+          description: "Parking lot user not found"
+        "200":
+          description: "The parking lot user was successfully updated"
+          schema:
+            $ref: '#/definitions/ParkinglotUser'
+    delete:
+      tags:
+      - "Parking lots users"
+      summary: "Delete an existing parking lot user"
+      description: ""
+      operationId: "deleteParkinglotUser"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "Id"
+        in: "path"
+        description: "ID of parking lot user to delete"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        "400":
+          description: "Invalid ID supplied"
+        "404":
+          description: "Parking lot user not found"
+        "200":
+          description: "The parking lot user was successfully deleted"
+definitions:
+  ParkinglotUser:
+    type: "object"
+    required:
+    - "name"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      username:
+        type: "string"
+        example: "myusername"
+      email:
+        type: "string"
+        example: "example@mail.com"
+      name:
+        type: "string"
+        example: "myname"
+      phone:
+        type: "string"
+        example: "123456789"
+    xml:
+      name: "Parking"
+  ParkinglotUserput:
+    type: "object"
+    required:
+    - "name"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      username:
+        type: "string"
+        example: "myusername"
+      email:
+        type: "string"
+        example: "example@mail.com"
+      name:
+        type: "string"
+        example: "myname"
+      phone:
+        type: "string"
+        example: "123456789"
+    xml:
+      name: "Parking"
+  Parkinglots:
+    type: "object"
+    required:
+    - "name"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      parkinglotuser:
+        type: "object"
+        properties:
+          id:
+            type: "integer"
+            format: "int64"
+          username:
+            type: "string"
+            example: "myusername"
+          email:
+            type: "string"
+            example: "example@mail.com"
+          name:
+            type: "string"
+            example: "myname"
+          phone:
+            type: "string"
+            example: "123456789"
+      parkingid:
+        type: "integer"
+        format: "int64"
+        example: 1234
+    xml:
+      name: "Parking"
+  Parkinglotsput:
+    type: "object"
+    required:
+    - "name"
+    properties:
+      parkinglotuser:
+        type: "object"
+        properties:
+          id:
+            type: "integer"
+            format: "int64"
+          username:
+            type: "string"
+            example: "myusername"
+          email:
+            type: "string"
+            example: "example@mail.com"
+          name:
+            type: "string"
+            example: "myname"
+          phone:
+            type: "string"
+            example: "123456789"
+      parkingid:
+        type: "integer"
+        format: "int64"
+        example: 1234
+    xml:
+      name: "Parking"
