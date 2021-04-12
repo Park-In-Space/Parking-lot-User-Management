@@ -310,9 +310,6 @@ definitions:
     required:
     - "name"
     properties:
-      id:
-        type: "integer"
-        format: "int64"
       username:
         type: "string"
         example: "myusername"
@@ -367,9 +364,6 @@ definitions:
       parkinglotuser:
         type: "object"
         properties:
-          id:
-            type: "integer"
-            format: "int64"
           username:
             type: "string"
             example: "myusername"
