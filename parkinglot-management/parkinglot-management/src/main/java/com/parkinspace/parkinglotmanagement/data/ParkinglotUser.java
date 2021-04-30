@@ -14,6 +14,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /*CREATE TABLE `parkinglotuser`.`parkinglotusers` (
   `id_plu` INT NOT NULL AUTO_INCREMENT,
+  `userId` VARCHAR(400) NOT NULL,
   `username` VARCHAR(50) NOT NULL,
   `email` VARCHAR(200) NOT NULL,
   `name` VARCHAR(200) NOT NULL,
