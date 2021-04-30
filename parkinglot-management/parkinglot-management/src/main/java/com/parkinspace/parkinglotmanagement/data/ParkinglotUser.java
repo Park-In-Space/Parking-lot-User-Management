@@ -14,7 +14,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /*CREATE TABLE `parkinglotuser`.`parkinglotusers` (
   `id_plu` INT NOT NULL AUTO_INCREMENT,
-  `userId` VARCHAR(400) NOT NULL,
+  `userid` VARCHAR(400) NOT NULL,
   `username` VARCHAR(50) NOT NULL,
   `email` VARCHAR(200) NOT NULL,
   `name` VARCHAR(200) NOT NULL,
@@ -30,7 +30,7 @@ public class ParkinglotUser {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private int id;
   @Column
-  private String userId;
+  private String userid;
   @Column
   private String username;
   @Column
@@ -53,11 +53,11 @@ public class ParkinglotUser {
   }
 
   public String getUserId() {
-    return userId;
+    return userid;
   }
 
-  public void setUserId(String userId) {
-    this.userId = userId;
+  public void setUserId(String userid) {
+    this.userid = userid;
   }
 
   public String getUsername() {
