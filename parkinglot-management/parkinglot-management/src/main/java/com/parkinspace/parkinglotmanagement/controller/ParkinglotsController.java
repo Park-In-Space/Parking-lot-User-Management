@@ -12,8 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-import javax.validation.Valid;
-
 import com.parkinspace.parkinglotmanagement.data.Parkinglots;
 import com.parkinspace.parkinglotmanagement.exception.ResourceNotFoundException;
 import com.parkinspace.parkinglotmanagement.service.ParkinglotsService;

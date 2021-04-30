@@ -29,6 +29,8 @@ public class ParkinglotUser {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private int id;
   @Column
+  private String userId;
+  @Column
   private String username;
   @Column
   private String email;
@@ -36,6 +38,7 @@ public class ParkinglotUser {
   private String name;
   @Column
   private String phone;
+
   @JsonIgnore
   @OneToMany(mappedBy = "parkinglotuser")
   private List<Parkinglots> parkinglots;
@@ -46,6 +49,14 @@ public class ParkinglotUser {
 
   public void setId(int id) {
     this.id = id;
+  }
+
+  public String getUserId() {
+    return userId;
+  }
+
+  public void setUserId(String userId) {
+    this.userId = userId;
   }
 
   public String getUsername() {

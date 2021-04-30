@@ -43,6 +43,9 @@ public class ParkinglotUserController {
     public ParkinglotUser update(@PathVariable(value = "id") int id, @RequestBody ParkinglotUser parkinglotuserDetails)
             throws ResourceNotFoundException {
         ParkinglotUser parkinglotuser = ParkinglotUsersService.findById(id);
+        if (parkinglotuserDetails.getUserId() != null) {
+            parkinglotuser.setUserId(parkinglotuserDetails.getUserId());
+        }
         if (parkinglotuserDetails.getUsername() != null) {
             parkinglotuser.setUsername(parkinglotuserDetails.getUsername());
         }
