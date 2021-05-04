@@ -291,6 +291,9 @@ definitions:
       id:
         type: "integer"
         format: "int64"
+      userID:
+        type: "string"
+        example: "U6876SDFAHG"
       username:
         type: "string"
         example: "myusername"
@@ -310,6 +313,9 @@ definitions:
     required:
     - "name"
     properties:
+      userID:
+        type: "string"
+        example: "U6876SDFAHG"
       username:
         type: "string"
         example: "myusername"
@@ -338,6 +344,9 @@ definitions:
           id:
             type: "integer"
             format: "int64"
+          userID:
+            type: "string"
+            example: "U6876SDFAHG"
           username:
             type: "string"
             example: "myusername"
@@ -364,6 +373,12 @@ definitions:
       parkinglotuser:
         type: "object"
         properties:
+          id:
+            type: "integer"
+            example: "1"
+          userID:
+            type: "string"
+            example: "U6876SDFAHG"
           username:
             type: "string"
             example: "myusername"
@@ -379,6 +394,6 @@ definitions:
       parkingid:
         type: "integer"
         format: "int64"
-        example: 1234
+        example: 1
     xml:
       name: "Parking"
